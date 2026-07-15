@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theni Anban Pickles — Small-batch pickles from Theni, Tamil Nadu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay:#8B4225;
+    --clay-dark:#6E3419;
+    --chili:#B23A2E;
+    --turmeric:#D9A227;
+    --leaf:#4C6444;
+    --leaf-dark:#374a30;
+    --paper:#EFE4C8;
+    --paper-2:#E3D5AE;
+    --paper-3:#F6EFDB;
+    --ink:#2B1E14;
+    --ink-soft:#5a4633;
+    --shadow: 0 12px 30px rgba(43,30,20,0.18);
+    --radius: 4px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    color:var(--ink);
+    margin:0;
+    line-height:1.05;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--chili);
+    font-weight:600;
+  }
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  section{padding:96px 0;}
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(239,228,200,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(43,30,20,0.15);
+  }
+  .nav{
+    max-width:1120px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand svg{width:30px;height:38px;color:var(--clay);}
+  .brand-word{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;letter-spacing:0.01em;}
+  .brand-word span{display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:1px;}
+  nav.links{display:flex;gap:28px;font-size:0.92rem;}
+  nav.links a{text-decoration:none;position:relative;padding:4px 0;}
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--chili);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after,nav.links a:focus-visible::after{width:100%;}
+  @media (max-width:720px){ nav.links{display:none;} }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--chili);
+    outline-offset:3px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 40px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,5vw,3.6rem);
+    font-weight:700;
+    margin:14px 0 20px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--chili);
+  }
+  .hero p.lede{
+    font-size:1.08rem;
+    max-width:46ch;
+    color:var(--ink-soft);
+    margin-bottom:30px;
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    letter-spacing:0.04em;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:var(--radius);
+    display:inline-block;
+    border:1.5px solid var(--ink);
+    transition:transform .18s ease, background .18s ease, color .18s ease;
+  }
+  .btn-solid{background:var(--chili);border-color:var(--chili);color:var(--paper-3);}
+  .btn-solid:hover{transform:translateY(-2px);background:var(--clay-dark);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{transform:translateY(-2px);background:var(--ink);color:var(--paper);}
+
+  .hero-jar-stage{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:380px;
+  }
+  .hero-jar{
+    position:relative;
+    width:230px;
+    transform-origin:bottom center;
+    animation:sway 7s ease-in-out infinite;
+  }
+  .hero-jar svg{width:100%;height:auto;filter:drop-shadow(var(--shadow));}
+  .hero-label{
+    position:absolute;
+    top:46%;left:50%;
+    width:150px;
+    transform:translate(-50%,-50%) rotate(-5deg);
+    background:var(--paper-3);
+    padding:14px 12px 16px;
+    text-align:center;
+    box-shadow:0 6px 14px rgba(43,30,20,0.25);
+    clip-path:polygon(4% 0%,96% 2%,100% 22%,97% 48%,100% 76%,95% 100%,3% 98%,0% 70%,4% 42%,1% 18%);
+  }
+  .hero-label .eyebrow{font-size:0.58rem;}
+  .hero-label .htitle{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;margin:4px 0 2px;}
+  .hero-label .hsub{font-size:0.66rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+  .wax-seal{
+    position:absolute;
+    width:56px;height:56px;
+    top:8%;right:6%;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #c9503f, var(--chili) 70%);
+    color:var(--paper-3);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.55rem;
+    text-align:center;
+    line-height:1.2;
+    box-shadow:0 4px 10px rgba(43,30,20,0.35);
+    animation:stamp .7s cubic-bezier(.2,1.6,.4,1) .35s both;
+    transform-origin:center;
+  }
+
+  @keyframes sway{
+    0%,100%{transform:rotate(-1.4deg);}
+    50%{transform:rotate(1.4deg);}
+  }
+  @keyframes stamp{
+    from{transform:scale(2.4) rotate(18deg);opacity:0;}
+    to{transform:scale(1) rotate(-8deg);opacity:1;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero-jar,.wax-seal{animation:none;}
+    .reveal{transition:none;opacity:1;transform:none;}
+  }
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;}
+    .hero-jar-stage{order:-1;min-height:280px;}
+  }
+
+  /* ---------- STORY ---------- */
+  .story{
+    background:var(--leaf);
+    color:var(--paper-3);
+    position:relative;
+    overflow:hidden;
+  }
+  .story::before{
+    content:"";
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 2px, transparent 2px, transparent 26px);
+    pointer-events:none;
+  }
+  .story .wrap{
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;position:relative;
+  }
+  .story h2{font-size:clamp(1.8rem,3.4vw,2.4rem);color:var(--paper-3);}
+  .story .tamil{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:1.3rem;color:var(--turmeric);margin-top:10px;display:block;
+  }
+  .story p{color:rgba(246,239,219,0.88);font-size:1.02rem;max-width:56ch;}
+  .story .eyebrow{color:var(--turmeric);}
+  @media (max-width:800px){ .story .wrap{grid-template-columns:1fr;} }
+
+  /* ---------- PROCESS ---------- */
+  .process .wrap > .eyebrow, .process h2{}
+  .process-head{max-width:60ch;margin-bottom:56px;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+    position:relative;
+  }
+  .steps::before{
+    content:"";
+    position:absolute;top:26px;left:6%;right:6%;height:2px;
+    background:repeating-linear-gradient(90deg, var(--turmeric) 0 8px, transparent 8px 16px);
+  }
+  .step{position:relative;padding:0 14px;text-align:left;}
+  .step .num{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--paper-3);
+    border:2px solid var(--turmeric);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--clay);
+    position:relative;z-index:2;margin-bottom:18px;
+  }
+  .step h3{font-size:1.05rem;margin-bottom:8px;}
+  .step p{font-size:0.9rem;color:var(--ink-soft);margin:0;}
+  @media (max-width:900px){
+    .steps{grid-template-columns:1fr 1fr;gap:36px 20px;}
+    .steps::before{display:none;}
+  }
+  @media (max-width:540px){ .steps{grid-template-columns:1fr;} }
+
+  /* ---------- PRODUCTS ---------- */
+  .products{background:var(--paper-2);}
+  .products-head{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    margin-bottom:48px;flex-wrap:wrap;
+  }
+  .products-head h2{font-size:clamp(1.8rem,3.4vw,2.4rem);max-width:14ch;}
+  .products-head p{max-width:38ch;color:var(--ink-soft);margin:10px 0 0;}
+  .shelf{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:26px;
+  }
+  .jar-card{
+    background:var(--paper-3);
+    border-radius:var(--radius);
+    padding:26px 20px 22px;
+    text-align:center;
+    box-shadow:0 8px 18px rgba(43,30,20,0.1);
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .jar-card:hover{transform:translateY(-6px);box-shadow:0 16px 28px rgba(43,30,20,0.18);}
+  .jar-card .jar-wrap{
+    position:relative;width:110px;height:150px;margin:0 auto 14px;
+  }
+  .jar-card svg.jar-svg{width:100%;height:100%;}
+  .jar-card .label{
+    position:absolute;top:44%;left:50%;
+    width:76px;
+    transform:translate(-50%,-50%) rotate(-4deg);
+    background:var(--paper);
+    padding:6px 4px 8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.56rem;
+    text-align:center;
+    box-shadow:0 3px 8px rgba(43,30,20,0.2);
+    clip-path:polygon(5% 0,95% 3%,100% 25%,96% 50%,100% 78%,94% 100%,4% 97%,0% 72%,5% 45%,2% 18%);
+  }
+  .jar-card h3{font-size:1.05rem;margin:6px 0 4px;}
+  .jar-card .desc{font-size:0.84rem;color:var(--ink-soft);margin-bottom:10px;min-height:40px;}
+  .heat{display:flex;gap:4px;justify-content:center;align-items:center;}
+  .heat svg{width:14px;height:14px;color:var(--chili);}
+  .heat svg.off{color:#d8cdb2;}
+  .heat .label-text{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--ink-soft);margin-left:4px;}
+
+  /* ---------- WHY THENI ---------- */
+  .why{position:relative;overflow:hidden;}
+  .why .wrap{display:grid;grid-template-columns:1fr 0.85fr;gap:50px;align-items:center;}
+  .why h2{font-size:clamp(1.8rem,3.4vw,2.4rem);margin-bottom:18px;}
+  .why p{color:var(--ink-soft);max-width:52ch;margin-bottom:14px;}
+  .terrain{width:100%;height:auto;}
+  @media (max-width:860px){ .why .wrap{grid-template-columns:1fr;} .why{padding-top:60px;} }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:var(--paper-2);
+    padding:64px 0 28px;
+    position:relative;
+    overflow:hidden;
+  }
+  .foot-grid{
+    display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;
+    padding-bottom:40px;
+    border-bottom:1px solid rgba(246,239,219,0.15);
+  }
+  footer .brand-word{color:var(--paper-3);}
+  footer .brand svg{color:var(--turmeric);}
+  footer h4{
+    font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--turmeric);margin:0 0 14px;
+  }
+  footer p, footer a{font-size:0.92rem;color:rgba(246,239,219,0.82);text-decoration:none;}
+  footer .foot-story{max-width:34ch;color:rgba(246,239,219,0.7);font-size:0.9rem;margin-top:10px;}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+    padding-top:22px;font-size:0.76rem;color:rgba(246,239,219,0.5);
+    font-family:'IBM Plex Mono',monospace;
+  }
+  @media (max-width:720px){ .foot-grid{grid-template-columns:1fr;gap:28px;} }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="Theni Anban Pickles home">
+      <svg viewBox="0 0 120 160" aria-hidden="true"><use href="#jar-symbol" fill="currentColor"/></svg>
+      <span class="brand-word">Anban Pickles<span>Theni · Tamil Nadu</span></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#story">Story</a>
+      <a href="#process">Process</a>
+      <a href="#jars">Jars</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- shared defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="jar-symbol" viewBox="0 0 120 160">
+      <ellipse cx="60" cy="6" rx="23" ry="6"/>
+      <rect x="37" y="2" width="46" height="16" rx="4"/>
+      <path d="M31,38 C31,24 36,17 60,17 C84,17 89,24 89,38 L96,138 C96,150 86,157 60,157 C34,157 24,150 24,138 Z"/>
+    </symbol>
+    <symbol id="chili-symbol" viewBox="0 0 40 40">
+      <path d="M11,7 C15,3 20,4 20,9 C29,9 35,17 31,25 C27,33 15,34 10,26 C4,21 3,12 11,7 Z"/>
+      <path d="M11,7 C8,3 5,1 2,1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div>
+      <span class="eyebrow">Small-batch · Theni, Tamil Nadu</span>
+      <h1>Pickled in Theni.<br>Sealed with <em>anban</em>.</h1>
+      <p class="lede">Mango, garlic, lemon and more — sun-cured, stone-ground and hand-mixed the way ammas in Theni have always made them. No factory, no shortcuts, no six-month shelf life.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#jars">See the jars</a>
+        <a class="btn btn-ghost" href="#process">How it's made</a>
+      </div>
+    </div>
+    <div class="hero-jar-stage">
+      <div class="hero-jar">
+        <svg viewBox="0 0 120 160" aria-hidden="true"><use href="#jar-symbol" fill="var(--clay)"/></svg>
+        <div class="hero-label">
+          <span class="eyebrow">Est. batch</span>
+          <div class="htitle">Manga Oorukai</div>
+          <div class="hsub">HAND-JARRED · THENI</div>
+        </div>
+        <div class="wax-seal" aria-hidden="true">anban<br>since '82</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">What anban means</span>
+        <h2>அன்பு.<span class="tamil">Anban — the quiet, constant kind of love.</span></h2>
+      </div>
+      <div class="reveal">
+        <p>Not the kind you announce — the kind stirred into a meal instead. That's the word my grandmother used for cooking, and it's the word we still use for pickling.</p>
+        <p>Every jar that leaves our kitchen in Theni starts with produce bought ripe that morning from the Vaigai basin, spice ground fresh on a granite ammikallu, and enough patience to let flavor actually happen instead of rushing it with vinegar and heat.</p>
+        <p>No preservatives beyond salt, oil and time. No two batches taste identical — and we think that's exactly the point.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="process-head reveal">
+        <span class="eyebrow">From orchard to jar</span>
+        <h2>Five steps. No shortcuts.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">01</div>
+          <h3>Harvest</h3>
+          <p>Mangoes, limes and gooseberries picked ripe from Theni orchards the same morning — never cold-stored.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">02</div>
+          <h3>Sun-cure</h3>
+          <p>Washed and cut produce dries under open sun for a full day, drawing out moisture the old way.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">03</div>
+          <h3>Stone-grind</h3>
+          <p>Chili, mustard and fenugreek are ground fresh on a granite ammikallu, never pre-milled or bought powdered.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">04</div>
+          <h3>Hand-mix</h3>
+          <p>Spice paste is folded through by hand in batches small enough that one person can taste every jar.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">05</div>
+          <h3>Clay-seal</h3>
+          <p>Pickles rest in sun-warmed clay jars so oil and spice settle properly before anything is bottled.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="jars">
+    <div class="wrap">
+      <div class="products-head reveal">
+        <h2>Jars on the shelf</h2>
+        <p>Five staples, made in small runs. When a batch sells out, the next one starts from scratch — not from a backup drum.</p>
+      </div>
+      <div class="shelf">
+
+        <div class="jar-card reveal">
+          <div class="jar-wrap">
+            <svg class="jar-svg" viewBox="0 0 120 160" aria-hidden="true"><use href="#jar-symbol" fill="var(--turmeric)"/></svg>
+            <div class="label">MANGA<br>OORUKAI</div>
+          </div>
+          <h3>Mango</h3>
+          <p class="desc">Raw mango, mustard oil, red chili. The one everyone asks for first.</p>
+          <div class="heat" aria-label="Spice level: fiery">
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <span class="label-text">FIERY</span>
+          </div>
+        </div>
+
+        <div class="jar-card reveal">
+          <div class="jar-wrap">
+            <svg class="jar-svg" viewBox="0 0 120 160" aria-hidden="true"><use href="#jar-symbol" fill="var(--leaf)"/></svg>
+            <div class="label">POONDU</div>
+          </div>
+          <h3>Garlic</h3>
+          <p class="desc">Whole garlic cloves slow-simmered in tamarind and jaggery.</p>
+          <div class="heat" aria-label="Spice level: medium">
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" class="off" fill="currentColor"/></svg>
+            <span class="label-text">MEDIUM</span>
+          </div>
+        </div>
+
+        <div class="jar-card reveal">
+          <div class="jar-wrap">
+            <svg class="jar-svg" viewBox="0 0 120 160" aria-hidden="true"><use href="#jar-symbol" fill="var(--chili)"/></svg>
+            <div class="label">ELUMICHAI</div>
+          </div>
+          <h3>Lemon</h3>
+          <p class="desc">Sun-softened lemon wedges in their own salted juice.</p>
+          <div class="heat" aria-label="Spice level: medium">
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" class="off" fill="currentColor"/></svg>
+            <span class="label-text">MEDIUM</span>
+          </div>
+        </div>
+
+        <div class="jar-card reveal">
+          <div class="jar-wrap">
+            <svg class="jar-svg" viewBox="0 0 120 160" aria-hidden="true"><use href="#jar-symbol" fill="var(--clay)"/></svg>
+            <div class="label">KARAMEDU</div>
+          </div>
+          <h3>Mixed Vegetable</h3>
+          <p class="desc">Carrot, turnip and green chili — whatever the market had that week.</p>
+          <div class="heat" aria-label="Spice level: mild">
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" class="off" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" class="off" fill="currentColor"/></svg>
+            <span class="label-text">MILD</span>
+          </div>
+        </div>
+
+        <div class="jar-card reveal">
+          <div class="jar-wrap">
+            <svg class="jar-svg" viewBox="0 0 120 160" aria-hidden="true"><use href="#jar-symbol" fill="#7a8b56"/></svg>
+            <div class="label">NELLIKAI</div>
+          </div>
+          <h3>Amla</h3>
+          <p class="desc">Gooseberry in mustard oil — sharp, sour, meant for a small spoon.</p>
+          <div class="heat" aria-label="Spice level: mild">
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" class="off" fill="currentColor"/></svg>
+            <svg viewBox="0 0 40 40"><use href="#chili-symbol" class="off" fill="currentColor"/></svg>
+            <span class="label-text">MILD</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY THENI -->
+  <section class="why">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Why Theni</span>
+        <h2>Where the Vaigai meets the hills.</h2>
+        <p>Theni sits where the Vaigai river basin runs into the Western Ghats — red soil suited to chili and gooseberry on one side, cool hill air for pepper and cardamom on the other. We buy what's ripe within a day's drive, not what's cheapest by the container.</p>
+        <p>That's also why our jars never taste quite the same twice. A drier season means sharper mango; a good rain means sweeter garlic. We'd rather bottle that honestly than smooth it out with more sugar.</p>
+      </div>
+      <svg class="terrain reveal" viewBox="0 0 400 240" aria-hidden="true">
+        <path d="M0,170 C60,120 100,190 160,140 C220,90 260,150 320,110 C360,86 380,100 400,90 L400,240 L0,240 Z" fill="var(--leaf)" opacity="0.9"/>
+        <path d="M0,200 C70,160 130,215 190,175 C250,135 300,190 400,150 L400,240 L0,240 Z" fill="var(--clay)" opacity="0.85"/>
+        <path d="M0,205 Q100,225 200,205 T400,210" fill="none" stroke="var(--turmeric)" stroke-width="3" opacity="0.8"/>
+      </svg>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="Theni Anban Pickles home">
+          <svg viewBox="0 0 120 160" aria-hidden="true"><use href="#jar-symbol" fill="currentColor"/></svg>
+          <span class="brand-word">Anban Pickles<span style="color:rgba(246,239,219,0.6)">Theni · Tamil Nadu</span></span>
+        </a>
+        <p class="foot-story">Small-batch pickles, hand-mixed in Theni. Anban means love — we put it in every jar.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p>Anban Pickles Kitchen<br>Theni, Tamil Nadu 625531</p>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <p><a href="mailto:hello@anbanpickles.example">hello@anbanpickles.example</a></p>
+        <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Anban Pickles, Theni</span>
+      <span>Demo site — no orders are placed here</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
